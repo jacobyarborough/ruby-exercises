@@ -1,7 +1,6 @@
 class Person
 
   attr_reader :name
-  attr_accessor :stone_status
 
   def initialize(name)
     @name = name
@@ -10,6 +9,14 @@ class Person
 
   def stoned?
     @stone_status
+  end
+
+  def make_stoned
+    @stone_status = true
+  end
+
+  def make_unstoned
+    @stone_status = false
   end
 
 end
