@@ -1,5 +1,3 @@
-require './lib/person'
-
 class Medusa
 
   attr_reader :name,
@@ -11,15 +9,15 @@ class Medusa
   end
 
   def stare(victim)
-    if @statues.length <= 2
-      @statues.push(victim)
-      victim.stone_status = true
-    else
-      victim_1 = @statues.shift
-      victim_1.stone_status = false
-      @statues.push(victim)
-      victim.stone_status = true
-    end
+    @statues.push(victim)
+    victim.make_stoned
+    handle_excess_victims
+  end
+
+  def handle_excess_victims
+    return if @statues.length <= 3
+    victim_1 = @statues.shift
+    victim_1.make_unstoned
   end
 
 end
