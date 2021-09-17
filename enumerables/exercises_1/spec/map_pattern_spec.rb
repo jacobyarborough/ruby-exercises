@@ -9,37 +9,63 @@ RSpec.describe 'map pattern' do
     expect(capitalized_names).to eq(["Alice", "Bob", "Charlie"])
   end
 
-  xit 'doubles' do
+  it 'doubles' do
     numbers = [1, 2, 3, 4, 5]
     doubles = []
     numbers.each do |number|
-      # Your code goes here
+      doubles.push(number*2)
     end
     expect(doubles).to eq([2, 4, 6, 8, 10])
   end
 
-  xit 'squares' do
+  it 'squares' do
     numbers = [1, 2, 3, 4, 5]
     squares = []
-    # Your code goes here
+    numbers.each do |num|
+      squares.push(num**2)
+    end
     expect(squares).to eq([1, 4, 9, 16, 25])
   end
 
-  xit 'lengths' do
+  it 'lengths' do
     names = ["alice", "bob", "charlie", "david", "eve"]
-    # Your code goes here
+    lengths = []
+    names.each do |name|
+      lengths.push(name.length)
+    end
     expect(lengths).to eq([5, 3, 7, 5, 3])
   end
 
-  xit 'normalize zip codes' do
+  it 'normalize zip codes' do
     numbers = [234, 10, 9119, 38881]
-    # Your code goes here
+    zip_code = []
+    #numbers.each do |num|
+    #  zip_code.push(num.to_s.rjust(5, '0'))
+    #end
+    numbers.each do |num|
+      until num.to_s.length == 5
+          num = '0' + num.to_s
+      end
+      zip_code.push(num.to_s)
+    end
     expect(zip_code).to eq(["00234", "00010", "09119", "38881"])
   end
 
   xit 'backwards' do
     names = ["alice", "bob", "charlie", "david", "eve"]
-    # Your code goes here
+    backwards = []
+    #names.each do |name|
+      #backwards.push(name.reverse)
+    #end
+    names.each do |name|
+      index = -1
+      reverse_name = ''
+      until index = -(name.length)
+        reverse_name += name[index]
+        index - 1
+      end
+      backwards.push(reverse_name)
+    end
     expect(backwards).to eq(["ecila", "bob", "eilrahc", "divad", "eve"])
   end
 
