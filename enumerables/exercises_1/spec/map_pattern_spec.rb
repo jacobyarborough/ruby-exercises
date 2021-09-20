@@ -51,7 +51,7 @@ RSpec.describe 'map pattern' do
     expect(zip_code).to eq(["00234", "00010", "09119", "38881"])
   end
 
-  xit 'backwards' do
+  it 'backwards' do
     names = ["alice", "bob", "charlie", "david", "eve"]
     backwards = []
     #names.each do |name|
@@ -60,24 +60,36 @@ RSpec.describe 'map pattern' do
     names.each do |name|
       index = -1
       reverse_name = ''
-      until index = -(name.length)
+      until index == -(name.length + 1)
         reverse_name += name[index]
-        index - 1
+        index -= 1
       end
       backwards.push(reverse_name)
     end
     expect(backwards).to eq(["ecila", "bob", "eilrahc", "divad", "eve"])
   end
 
-  xit 'words with no vowels' do
+  it 'words with no vowels' do
     words = ["green", "sheep", "travel", "least", "boat"]
-    # Your code goes here
+    without_vowels = []
+    words.each do |word|
+      without_vowels.push(word.gsub(/([aeiou])/, ''))
+    end
     expect(without_vowels).to  eq(["grn", "shp", "trvl", "lst", "bt"])
   end
 
-  xit 'trims last letter' do
+  it 'trims last letter' do
     animals = ["dog", "cat", "mouse", "frog", "platypus"]
-    # Your code goes here
+    trimmed = []
+    animals.each do |animal|
+      index = 0
+      short_name = ''
+      until index == (animal.length - 1)
+        short_name += animal[index]
+        index += 1
+      end
+      trimmed.push(short_name)
+    end
     expect(trimmed).to eq(["do", "ca", "mous", "fro", "platypu"])
   end
 end

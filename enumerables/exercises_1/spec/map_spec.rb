@@ -34,21 +34,21 @@ RSpec.describe 'map' do
     expect(zip_codes).to eq(["00234", "00010", "09119", "38881"])
   end
 
-  xit 'backwards' do
+  it 'backwards' do
     names = ["alice", "bob", "charlie", "david", "eve"]
-    # Your code goes here
+    backwards = names.map { |name| name.reverse }
     expect(backwards).to eq(["ecila", "bob", "eilrahc", "divad", "eve"])
   end
 
-  xit 'words with no vowels' do
+  it 'words with no vowels' do
     words = ["green", "sheep", "travel", "least", "boat"]
-    # Your code goes here
+    without_vowels = words.map { |word| word.gsub(/([aeiou])/, '')}
     expect(without_vowels).to eq(["grn", "shp", "trvl", "lst", "bt"])
   end
 
-  xit 'trims last letter' do
+  it 'trims last letter' do
     animals = ["dog", "cat", "mouse", "frog", "platypus"]
-    # Your code goes here
+    trimmed = animals.map { |animal| animal.chop }
     expect(trimmed).to eq(["do", "ca", "mous", "fro", "platypu"])
   end
 end
